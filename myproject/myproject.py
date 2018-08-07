@@ -1,11 +1,13 @@
-from flask import Flask
-import sys
+from flask import Flask, render_template
 
-application = Flask(__name__)
+app = Flask(__name__)
+app.config['TEMPLATES_AUTO_RELOAD'] = True
 
-@application.route("/")
-def hello():
-    return "<h1 style='color:blue'>Hello There! I'm {} </h1>".format(sys.version)
+@app.route('/')
+def hello_world():
+    return render_template('index.html')
 
-if __name__ == "__main__":
-    application.run(host='0.0.0.0')
+
+if __name__ == '__main__':
+    app.run()
+
